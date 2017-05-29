@@ -5,16 +5,25 @@ public class Entry {
 
     // an id for the cached object
     private int obejctId;
-
+    private Object data;
     private Entry prev;
     private Entry next;
 
-    public Entry(int objectId) {
+    public Entry(int objectId, Object data) {
         this.obejctId = objectId;
+        this.data = data;
+    }
+
+    public Object getData() {
+        return this.data;
+    }
+
+    public void setData(Object data) {
+        this.data = data;
     }
 
     public int getObejctId() {
-        return obejctId;
+        return this.obejctId;
     }
 
     public void setObejctId(int obejctId) {

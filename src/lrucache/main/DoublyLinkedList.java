@@ -27,13 +27,13 @@ class DoublyLinkedList {
         }
     }
 
-    public Entry addPageToList(int pageNumber) {
-        Entry pageNode = new Entry(pageNumber);
+    public Entry addObjectToList(Entry entry) {
+
         if(this.head == null) {
-            this.head = pageNode;
-            this.tail = pageNode;
+            this.head = entry;
+            this.tail = entry;
             this.currSize = 1;
-            return pageNode;
+            return entry;
         } else if(currSize < capacity) {
             this.currSize++;
         } else {
@@ -41,13 +41,14 @@ class DoublyLinkedList {
             this.tail.setNext(null);
         }
 
-        pageNode.setNext(head);
-        this.head.setPrev(pageNode);
-        this.head = pageNode;
-        return pageNode;
+        // add new entry to the head.
+        entry.setNext(head);
+        this.head.setPrev(entry);
+        this.head = entry;
+        return entry;
     }
 
-    public void movePageToHead(Entry pageNode) {
+    public void moveObjectToHead(Entry pageNode) {
         if(pageNode == null || pageNode == head) {
             return;
         }

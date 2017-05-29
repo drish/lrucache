@@ -48,6 +48,16 @@ public class LRUCache {
         this.capacity = capacity;
     }
 
+    public Entry getMostAccessed() {
+        return this.cache.get(this.list.getHead().getObejctId());
+    }
+
+    /**
+     * Check if index exists, if not add to cache
+     *
+     * @param objectIndex
+     * @return
+     */
     public Entry getObject(int objectIndex) {
 
        Entry entry = null;
@@ -55,20 +65,26 @@ public class LRUCache {
 
             // id is present in cache, move the page to head
             entry = this.cache.get(objectIndex);
-            this.list.movePageToHead(entry);
-            return entry;
-        } else {
-
-            // not cached, add to the tail
-            if (this.list.getCurrSize() == this.list.getSize()) {
-                // if full, remove tail(lru) from the cache list
-                // and hash map
-                this.cache.remove(this.list.getTail().getObejctId());
-            }
-            entry = this.list.addPageToList(objectIndex);
-            this.cache.put(objectIndex, entry);
+            this.list.moveObjectToHead(entry);
             return entry;
         }
+        return null;
+    }
+
+    /**
+     * Add object to cache
+     */
+    public void addObject(int objectIndex, Object o) {
+
+        Entry entry = new Entry(objectIndex, o);
+
+        if (this.list.getCurrSize() == this.list.getSize()) {
+            // if full, remove tail(lru) from the cache list
+            // and hash map
+            this.cache.remove(this.list.getTail().getObejctId());
+        }
+        this.list.addObjectToList(entry);
+        this.cache.put(objectIndex, entry);
     }
 
     public void printCacheState() {
