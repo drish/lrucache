@@ -1,4 +1,4 @@
-package lrucache.main;
+package lrucache;
 
 // Class used to store an object id in a doubly linked list
 public class Entry {

@@ -1,4 +1,4 @@
-package lrucache.main;
+package lrucache;
 
 class DoublyLinkedList {
 

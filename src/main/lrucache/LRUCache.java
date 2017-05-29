@@ -1,4 +1,4 @@
-package lrucache.main;
+package lrucache;
 
 import java.util.HashMap;
 
@@ -74,7 +74,7 @@ public class LRUCache {
     /**
      * Add object to cache
      */
-    public void addObject(int objectIndex, Object o) {
+    public Entry addObject(int objectIndex, Object o) {
 
         Entry entry = new Entry(objectIndex, o);
 
@@ -85,6 +85,7 @@ public class LRUCache {
         }
         this.list.addObjectToList(entry);
         this.cache.put(objectIndex, entry);
+        return entry;
     }
 
     public void printCacheState() {
