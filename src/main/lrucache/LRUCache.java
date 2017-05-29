@@ -31,7 +31,7 @@ import java.util.HashMap;
  *
  * A doubly linked list is used to store object ids in a insert-on-head fashion
  * so that only ids are stored into the doubly linked list
- * and these ids are used as keys in the hash map
+ * these ids are used as keys in the hash map so that we have O(1) for access and deletion.
  *
  * The doubly linked list is initialized with a capacity required for the LRU cache to work.
  *
